@@ -78,6 +78,9 @@ public class Jeroo extends JerooBase {
         pick();
         hop();
       }
+        if (isNet(AHEAD)) {
+            toss();
+        }
     }
 
     // Do NOT touch the code below here

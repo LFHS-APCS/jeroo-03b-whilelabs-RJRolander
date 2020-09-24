@@ -16,7 +16,7 @@ public class Jeroo extends JerooBase {
     {
         while (!isNet(AHEAD)) // Step 2: Iterate the opposite of Step 1
         {
-            hop();  // Step 3:  Make progress towards the goal
+         hop();  // Step 3:  Make progress towards the goal
         }
         // Step 1:  At the end, there should be a net in front
     }
@@ -50,7 +50,9 @@ public class Jeroo extends JerooBase {
      * 3.  Make progress towards the goal within the loop.
      */
     public void faceNorth() {
-
+      while (!isFacing(NORTH)) {
+        turn(LEFT);
+      }
     }
 
     /**
@@ -58,7 +60,11 @@ public class Jeroo extends JerooBase {
      * no matter where it is or which way it is facing.
      */
     public void goToOrigin() {
-
+      if (!isWater(AHEAD)){
+        hop();
+      }else{
+        turn(LEFT);
+      }
     }
 
     /**
@@ -67,7 +73,11 @@ public class Jeroo extends JerooBase {
      * The Jeroo should stop as soon as there is a net in front of it.       
      */
     public void meander() {
-
+      pick();
+      while (isFlower(AHEAD)){
+        pick();
+        hop();
+      }
     }
 
     // Do NOT touch the code below here
